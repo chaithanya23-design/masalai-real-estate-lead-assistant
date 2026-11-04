@@ -1,0 +1,8 @@
+.env
+masalai.db
+masalai.db-shm
+masalai.db-wal
+venv/
+.venv/
+.streamlit/secrets.toml
+__pycache__/
