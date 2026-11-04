@@ -48,7 +48,6 @@ The app uses Groq's `openai/gpt-oss-120b` model through the Groq Python client a
    streamlit run app.py
    ```
 
-Keep `.env` private. Never commit your API key to GitHub.
 
 ## Technical decisions
 
@@ -67,4 +66,4 @@ Keep `.env` private. Never commit your API key to GitHub.
 
 ## Live demo
 
-[Open the deployed MASAL AI app](PASTE_YOUR_STREAMLIT_URL_HERE)
+https://masalai-real-estate-lead-assistant-yiw7dyhomqofxk2tn6maby.streamlit.app/
