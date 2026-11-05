@@ -9,15 +9,15 @@ MASAL AI helps real estate teams capture enquiries, understand customer needs, p
 - Lead-specific AI chat with clickable suggested questions.
 - Dashboard and analytics for saved leads, priorities, and follow-ups.
 - Follow-up reminders that can be marked complete.
-- Property search using public web results, with listing links.
+- Property search with pre-filtered links for four listing platforms, plus an optional AI web search.
 
 ## Architecture
 
-The Streamlit interface in `app.py` collects enquiries and displays the dashboard, AI chat, reminders, analytics, and property search. Python functions save and retrieve leads from a local SQLite database named `masalai.db`. The Groq Python client sends lead-analysis and chat requests to Groq. Property search uses Groq's built-in browser search tool. Locally, the API key is read from `.env`; in deployment, it is configured through Streamlit Community Cloud Secrets.
+The Streamlit interface in `app.py` collects enquiries and displays the dashboard, AI chat, reminders, analytics, and property search. Python functions save and retrieve leads from a local SQLite database named `masalai.db`. The Groq Python client sends lead-analysis and chat requests to Groq. Property Search creates pre-filtered search links for MagicBricks, 99acres, Housing.com, and NoBroker; an optional setting also calls Groq's built-in browser search tool. Locally, the API key is read from `.env`; in deployment, it is configured through Streamlit Community Cloud Secrets.
 
 ## AI model and API
 
-The app uses Groq's `openai/gpt-oss-120b` model through the Groq Python client and its chat completions API for lead analysis and the lead-specific assistant. The property search feature calls the same model with Groq's browser search tool enabled.
+The app uses Groq's `openai/gpt-oss-120b` model through the Groq Python client's chat completions API for lead analysis and the lead-specific assistant. If the user enables AI web search, the property search feature calls the same model with Groq's browser search tool enabled.
 
 ## Run locally
 
@@ -59,11 +59,11 @@ The app uses Groq's `openai/gpt-oss-120b` model through the Groq Python client a
 
 ## Known limitations
 
-- The app requires a valid Groq API key and an internet connection for AI analysis, chat, and property search.
-- Public property listings can be outdated or inaccurate; confirm price and availability with the listing contact.
+- The app requires a valid Groq API key and an internet connection for AI analysis, chat, and optional AI web search. The quick search links open external listing-site search pages.
+- Search results and public property listings can be outdated or inaccurate; confirm price and availability with the listing contact.
 - Local SQLite storage is suitable for a demo, but Streamlit Community Cloud does not guarantee persistence of local files. Use a managed database before relying on this app for durable customer records.
 - The app is a prototype and does not include authentication or multi-user access controls.
 
 ## Live demo
 
-https://masalai-real-estate-lead-assistant-yiw7dyhomqofxk2tn6maby.streamlit.app/
+[Open the deployed MASAL AI app](https://masalai-real-estate-lead-assistant-yiw7dyhomqofxk2tn6maby.streamlit.app/)
